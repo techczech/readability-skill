@@ -56,6 +56,8 @@ Load these based on the task:
 |------|----------|
 | `references/five-principles.md` | Explaining core readability concepts |
 | `references/simple-language.md` | Advice on sentence structure, addressing readers, verb usage |
+| `references/jargon-acronyms.md` | Questions about jargon, acronyms, audience-appropriate language |
+| `references/examples.md` | Showing concrete before/after examples of simplified language |
 | `references/document-tips.md` | Specific formatting advice for documents |
 | `references/powerpoint-tips.md` | Advice specific to presentations/slides |
 | `references/reading-strategies.md` | Questions about how people read and cognitive load |
