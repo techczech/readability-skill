@@ -29,12 +29,18 @@ Provide evidence-based feedback on document readability using the five principle
 
 ### When User Pastes Text for Review
 
-1. **Analyze first** - Read the text and identify 3-5 specific issues
-2. **Calculate stats** if lengthy text:
-   - Word count
-   - Sentence count
-   - Average sentence length (target: 15-20 words)
-   - Longest sentence
+1. **Run quantitative analysis** for any substantial text (100+ words):
+   ```bash
+   python scripts/analyze_readability.py "paste the text here"
+   # Or for files:
+   python scripts/analyze_readability.py --file input.txt
+   ```
+2. **Review the metrics**:
+   - **Dale-Chall score** - Grade level indicator (target: 6-8 for general audience)
+   - **Average sentence length** - Target 15-20 words
+   - **Difficult words** - Words not on Dale-Chall easy list
+   - **AWL words** - Academic Word List matches (may need simplification for general readers)
+   - **Long sentences** - Sentences over 25 words that may need splitting
 3. **Identify main message** - Summarize what the text is trying to communicate
 4. **Provide specific suggestions** with examples from their text:
    - Quote the original
@@ -77,6 +83,42 @@ Load these based on the task:
 - Don't give generic advice - always tie to specific text
 - Don't overwhelm - max 5 suggestions at a time
 - Don't remove important information - just reposition it
+
+## Quantitative Analysis Script
+
+The `scripts/analyze_readability.py` script provides objective metrics:
+
+### Usage
+```bash
+python scripts/analyze_readability.py "Your text here"
+python scripts/analyze_readability.py --file document.txt
+cat document.txt | python scripts/analyze_readability.py --stdin
+python scripts/analyze_readability.py --file doc.txt --json  # JSON output
+```
+
+### Interpreting Results
+
+| Metric | Target | Action if exceeded |
+|--------|--------|-------------------|
+| Dale-Chall Score | 6-8 (general), <6 (broad public) | Simplify vocabulary, split sentences |
+| Avg Sentence Length | 15-20 words | Split long sentences |
+| Difficult Word % | <10% | Replace with simpler synonyms |
+| Long Sentences (>25 words) | Minimize | Split or restructure |
+
+### Dale-Chall Grade Levels
+- **≤4.9**: Grade 4 and below (easily understood)
+- **5.0-5.9**: Grades 5-6
+- **6.0-6.9**: Grades 7-8
+- **7.0-7.9**: Grades 9-10
+- **8.0-8.9**: Grades 11-12
+- **9.0-9.9**: College level
+- **≥10.0**: College graduate level
+
+### Using AWL Words List
+Academic Word List words are common in formal/academic writing. When found:
+- For **academic audiences**: AWL words are appropriate
+- For **general audiences**: Consider simpler alternatives
+- Example: "utilize" → "use", "facilitate" → "help"
 
 ## Response Format
 
