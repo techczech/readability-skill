@@ -62,17 +62,25 @@ Benefits:
 - People using **magnifiers** find them easier to follow
 - **Increasing font size** achieves the same effect
 
-## 9. Font Size and Line Spacing
+## 9. Font Size, Spacing, and Font Choice
 
 Increase reading speed by up to 10% by making font bigger and increasing line spacing.
 
-**Ideal line spacing:** 1.2-1.5
+**Ideal line spacing:** 1.5 minimum for body text, **1.625 optimal** for sustained reading (GOV.UK standard)
 
 **Ideal font sizes** (vary by typeface):
 - Handout: Arial 14pt
-- Long expository text: Times New Roman 13pt
+- Long expository text: Times New Roman 13pt (or Georgia 12pt)
 - PowerPoint slides: Arial 28pt or more
 - Email: Calibri 14pt
+- Web/screen body text: 19px (1.1875rem)
+
+**Font family depends on reading duration:**
+- **Sans-serif** (Arial, Calibri, system fonts) — best for scanning: headings, labels, bullet lists, captions, navigation
+- **Serif** (Times New Roman, Georgia, Palatino) — best for sustained reading: paragraphs of body text, reports, briefs, articles
+- Use **both in the same document** — sans-serif for structure, serif for content. This is the pattern used by quality publications.
+
+Don't lead with font advice (structure and information order matter more), but when fonts come up, the key question is: **how long will someone read this continuously?** Under 30 seconds = sans-serif. Over 2 minutes = serif.
 
 ## 10. Graphics Use
 

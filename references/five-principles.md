@@ -5,9 +5,15 @@
 Increasing the amount of space makes it **easier to process**. The more space around text, the **more attention** is available for content.
 
 **Easiest ways** of increasing space:
-- Larger font
-- Increased line spacing (ideal: 1.2-1.5)
-- Shorter lines (50-70 characters)
+- Larger font (19px / ~14pt minimum for body text on screen)
+- Increased line spacing:
+  - **1.2-1.3** — acceptable for captions, labels, UI text
+  - **1.5** — minimum for body paragraphs
+  - **1.625** — optimal for sustained reading of 200+ words (the GOV.UK standard, derived from large-scale accessibility testing)
+- Shorter lines:
+  - **50-60 characters** — ideal for dyslexic readers and mobile screens
+  - **65-75 characters** — optimal for complex informational text on desktop
+  - **Under 30 characters** — for presentation slides
 
 **Avoid** formatting that distorts or crowds text:
 - Underlining

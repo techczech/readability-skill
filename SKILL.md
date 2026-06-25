@@ -11,6 +11,9 @@ description: |
   - User wants to improve PowerPoint slides or presentations for readability
   - User asks about formatting documents, using headings, bullet points, or structure
   - User requests help making content accessible to diverse readers (dyslexic, non-native speakers, etc.)
+  - User is building a web page, dashboard, or HTML output and asks about readability or typography
+  - User mentions web typography, CSS readability, accessible web design, or GOV.UK design standards
+  - User asks about font sizes, line height, line length, or paragraph spacing for screen reading
 ---
 
 # Readability Coach
@@ -66,8 +69,9 @@ Load these based on the task:
 | `references/examples.md` | Showing concrete before/after examples of simplified language |
 | `references/document-tips.md` | Specific formatting advice for documents |
 | `references/powerpoint-tips.md` | Advice specific to presentations/slides |
+| `references/web-readability.md` | Web typography, CSS, screen reading, GOV.UK standards |
 | `references/reading-strategies.md` | Questions about how people read and cognitive load |
-| `references/accessibility.md` | Questions about disabilities, dyslexia, screen readers |
+| `references/accessibility.md` | Questions about disabilities, dyslexia, screen readers, contrast |
 
 ## Priorities
 
@@ -104,6 +108,9 @@ python scripts/analyze_readability.py --file doc.txt --json  # JSON output
 | Avg Sentence Length | 15-20 words | Split long sentences |
 | Difficult Word % | <10% | Replace with simpler synonyms |
 | Long Sentences (>25 words) | Minimize | Split or restructure |
+| Avg Paragraph Length | Under 150 words | Break into smaller paragraphs |
+| Heading Density | 0.2+ (1 heading per 5 paragraphs) | Add section headings for scannability |
+| Avg Line Length | Under 80 characters | Constrain column width |
 
 ### Dale-Chall Grade Levels
 - **≤4.9**: Grade 4 and below (easily understood)

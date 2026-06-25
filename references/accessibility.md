@@ -30,6 +30,26 @@ When documents include images or tables:
 - Describe what the image communicates, not just what it shows
 - Tables need headers marked properly
 
+### Colour Contrast
+
+WCAG AA requires minimum contrast ratios between text and its background:
+
+| Text type | Minimum ratio |
+|-----------|--------------|
+| **Normal text** (under 18pt) | **4.5:1** |
+| **Large text** (18pt+ or 14pt+ bold) | **3:1** |
+| **UI components** (buttons, inputs, icons) | **3:1** |
+
+**Common failures:**
+- Light gray text on white backgrounds (the "designer gray" problem — `#999` on `#fff` is only 2.8:1)
+- Low-contrast placeholder text in form fields
+- Coloured text on coloured backgrounds without checking the ratio
+- Text over images or gradients where contrast varies
+
+**How to check:** Use the browser DevTools accessibility audit, the WebAIM Contrast Checker (web tool), or the Colour Contrast Analyser (desktop app). Most design tools (Figma, Sketch) have built-in contrast checking.
+
+**Safe defaults:** Black (`#000`) on white is 21:1. Dark gray (`#333`) on white is 12.6:1. Both are well above the 4.5:1 minimum.
+
 ### Colour Cannot Be the Only Indicator
 
 Never use colour as the only way to convey information.

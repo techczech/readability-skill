@@ -61,6 +61,21 @@ Once readers start, they use one of three modes:
 - Bookmark PDFs
 - Make all text searchable
 
+### Projected Reading (Meetings and Shared Screens)
+
+Content shown on a projector, shared screen, or large display during meetings has distinct requirements. The reader is further from the screen, cannot control pace, and is dividing attention between the screen and the speaker.
+
+**How to support:**
+- Minimum text size **1.3rem (21px)**, ideally **1.5rem (24px)**
+- Line length under **60-65 characters**
+- Larger heading scale: H2 at **2.5rem+** so it's visible across a room
+- **One idea per visible screen** — don't require scrolling mid-discussion
+- **High contrast mandatory** — projectors wash out colour, so avoid light text on medium backgrounds
+- Remove navigation chrome, sidebars, and filter panels — these are distracting when projected
+- Bold key phrases so listeners can glance at the screen and catch the point without reading every word
+
+This is the fourth reading mode beyond comprehensive, skimming, and scanning. Design for it explicitly when content will be shown in meetings.
+
 ## Cognitive Load Theory
 
 **Cognitive load** is the amount of information placed in working memory. Working memory **limits what you can reason about**.
