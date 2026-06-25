@@ -213,6 +213,24 @@ def analyze_text(text: str) -> Dict:
     total_syllables = sum(count_syllables(w) for w in words)
     avg_syllables_per_word = total_syllables / total_words if total_words else 0
 
+    # Paragraph length analysis
+    paragraph_word_counts = [len(tokenize_words(p)) for p in paragraphs]
+    long_paragraphs = [(p[:120] + '...' if len(p) > 120 else p, wc)
+                       for p, wc in zip(paragraphs, paragraph_word_counts) if wc > 150]
+    avg_paragraph_length = (sum(paragraph_word_counts) / len(paragraph_word_counts)
+                            if paragraph_word_counts else 0)
+
+    # Heading density (lines starting with # in markdown, or ALL CAPS lines)
+    lines = text.splitlines()
+    heading_count = sum(1 for line in lines if line.strip().startswith('#')
+                        or (line.strip().isupper() and 3 < len(line.strip()) < 80))
+    heading_density = (heading_count / total_paragraphs) if total_paragraphs else 0
+
+    # Estimated line length at typical rendering (19px in ~680px column ~ 75ch)
+    non_empty_lines = [line for line in lines if line.strip()]
+    avg_line_chars = (sum(len(line) for line in non_empty_lines) / len(non_empty_lines)
+                      if non_empty_lines else 0)
+
     return {
         'basic_stats': {
             'total_words': total_words,
@@ -225,6 +243,14 @@ def analyze_text(text: str) -> Dict:
             'avg_word_length': round(avg_word_length, 1),
             'avg_syllables_per_word': round(avg_syllables_per_word, 2),
             'target_sentence_length': '15-20 words',
+        },
+        'structure': {
+            'avg_paragraph_length': round(avg_paragraph_length, 1),
+            'long_paragraphs_count': len(long_paragraphs),
+            'long_paragraphs': [(t, wc) for t, wc in long_paragraphs[:3]],
+            'heading_count': heading_count,
+            'heading_density': round(heading_density, 2),
+            'avg_line_chars': round(avg_line_chars, 1),
         },
         'dale_chall': {
             'raw_score': round(raw_score, 2),
@@ -279,6 +305,24 @@ def format_results_table(results: Dict) -> str:
     lines.append(f"  (Target:                 {avgs['target_sentence_length']})")
     lines.append(f"  Avg word length:         {avgs['avg_word_length']} characters")
     lines.append(f"  Avg syllables per word:  {avgs['avg_syllables_per_word']}")
+
+    # Structure
+    lines.append("\n## DOCUMENT STRUCTURE")
+    lines.append("-" * 40)
+    struct = results['structure']
+    para_status = "✓" if struct['avg_paragraph_length'] <= 150 else "⚠"
+    lines.append(f"  Avg paragraph length:    {struct['avg_paragraph_length']} words {para_status}")
+    lines.append(f"  Long paragraphs (>150w): {struct['long_paragraphs_count']}")
+    heading_status = "✓" if struct['heading_density'] >= 0.2 else "⚠ sparse"
+    lines.append(f"  Headings found:          {struct['heading_count']} {heading_status}")
+    lines.append(f"  Heading density:         {struct['heading_density']} (headings per paragraph)")
+    line_status = "✓" if struct['avg_line_chars'] <= 80 else "⚠ wide"
+    lines.append(f"  Avg line length:         {struct['avg_line_chars']} characters {line_status}")
+    if struct['long_paragraphs']:
+        lines.append("\n  Long paragraphs:")
+        for i, (para, wc) in enumerate(struct['long_paragraphs'], 1):
+            lines.append(f"\n  {i}. ({wc} words)")
+            lines.append(f"     \"{para}\"")
 
     # Dale-Chall
     lines.append("\n## DALE-CHALL READABILITY")
