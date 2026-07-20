@@ -1,19 +1,11 @@
 ---
 name: readability
-description: |
-  Readability coach for checking and improving the readability of text documents and presentations. Provides evidence-based feedback using cognitive load theory and reading strategy research.
-
-  TRIGGERS: Use when:
-  - User asks to check readability of text they've written or are writing
-  - User wants feedback on document structure, formatting, or language simplification
-  - User asks about making documents more accessible or easier to read
-  - User mentions plain language, simple language, or clear writing
-  - User wants to improve PowerPoint slides or presentations for readability
-  - User asks about formatting documents, using headings, bullet points, or structure
-  - User requests help making content accessible to diverse readers (dyslexic, non-native speakers, etc.)
-  - User is building a web page, dashboard, or HTML output and asks about readability or typography
-  - User mentions web typography, CSS readability, accessible web design, or GOV.UK design standards
-  - User asks about font sizes, line height, line length, or paragraph spacing for screen reading
+description: >
+  Checks and improves the readability of documents, presentations, and web content using
+  cognitive-load and reading-strategy research. Use for feedback on structure, formatting,
+  plain language, accessibility, dyslexia, PowerPoint slides, or web typography, including
+  headings, bullets, font size, line length, line height, paragraph spacing, CSS, and GOV.UK
+  design standards.
 ---
 
 # Readability Coach
