@@ -41,6 +41,51 @@ Never allow text to stretch across the full viewport width.
 
 On mobile, the viewport naturally constrains line length. The danger is on wide desktop screens where unbounded text becomes unreadable.
 
+## Scan Paths: the reading axis and the scanning axis
+
+Line length is usually taught as a *reading* rule. It is also a *scanning* rule, and that matters more in interfaces than in documents.
+
+Two axes do two different jobs:
+
+| Axis | Job | Use it for |
+|------|-----|-----------|
+| **Left → right** | Depth | Content the reader will actually read. Can run to two lines. Larger type. |
+| **Top → bottom** | Speed | Lists the reader triages. Short rows, strong rhythm, minimum eye travel. |
+
+Readers in scanning mode follow an F-shape: a full left-to-right sweep across the top, then progressively shorter sweeps as the eye commits to descending the left edge. Long rows fight that descent. When a row's title sits on the left and its status sits 700px away at the right edge, the eye must traverse dead space on every row and repeatedly re-acquire its vertical thread. The list stops being scannable even though every individual row is legible.
+
+**The rule: a column meant for scanning must be narrow enough that a row reads without a horizontal journey.** If metadata is pinned to a far right edge, either bring it inboard or move it to a second line.
+
+### The alignment clause
+
+The rule is not "keep everything close to the left". It is: **never make the eye travel to an unaligned destination.**
+
+A lone value flung to the right edge is a horizontal journey ending nowhere — the next row's equivalent value sits at a different x, so the eye re-hunts on every line. The same value placed in an **aligned column** is a vertical target: once the eye finds the column it stops travelling sideways, because the next value is directly below.
+
+Columns therefore convert horizontal cost into vertical rhythm, which is exactly what the scanning axis wants. Two consequences:
+
+- Metadata in a table or list belongs in fixed-width, aligned columns — not floated after variable-length text, where it lands at a different x per row.
+- When two stacked panels share a field (an age, a status, a count), **align that column across both**. One vertical rule down the whole surface turns two separate scans into one.
+
+### The 70/30 split
+
+A practical default for dashboards and mixed-density surfaces:
+
+- **Left ~70%** — what earns depth. Two-line rows are fine here; type can be larger; the reader may stop and actually read. Scanned top-to-bottom, with rows short enough to keep that vertical thread.
+- **Right ~30%** — what needs attention only sometimes. Narrower, denser, glanceable. Never the primary work.
+
+### Which side does important content go on?
+
+Not a fixed rule. It depends on whether you want the eye to **start** there or **arrive** there.
+
+| Goal | Put it | Why |
+|------|--------|-----|
+| Deep focus begins here and stays | **Left** | The eye starts left; nothing leads it away |
+| Navigation into reading (TOC, index, rail) | **Left**, reading surface on the right | A glance left, then the eye follows naturally into the deep read |
+| Content the eye should be led *to* | **Right** | The left element leads into it; the right is the destination |
+
+The tension is genuine and has to be resolved per surface: a table of contents belongs left *because* the eye leaves it for the reading on the right, while a primary work list belongs left *because* the eye should settle there and not be led onward. Before choosing a side, ask which of those two things the surface is doing.
+
 ## Paragraph Spacing
 
 Use **margin-bottom, not indentation**, to separate paragraphs on screen. Indentation works in print but is ambiguous on screen where line breaks are unpredictable.
